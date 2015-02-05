@@ -2,6 +2,9 @@
  * XBOX Controller Mapping
  */
 
+#if !defined(_XBOX_CONTROLLER_H_)
+#define _XBOX_CONTROLLER_H_ 1
+
 class XboxController {
 
 public:
@@ -22,3 +25,5 @@ public:
 	static const int RIGHT_JOYSTICK_Y = 5;
 
 };
+
+#endif

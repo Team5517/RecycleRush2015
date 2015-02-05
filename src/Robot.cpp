@@ -5,28 +5,29 @@ class Robot: public IterativeRobot
 {
 
 	LiveWindow *lw;
+
 	RobotDrive robot;
 	Joystick controller;
 	Compressor compressor;
 	DoubleSolenoid armSolenoid;
 
 	// Motor PWM Ports
-	int const LEFT_DRIVE_MOTOR_1 = 0;
-	int const LEFT_DRIVE_MOTOR_2 = 1;
-	int const RIGHT_DRIVE_MOTOR_1 = 2;
-	int const RIGHT_DRIVE_MOTOR_2 = 3;
+	const int LEFT_DRIVE_MOTOR_1 = 0;
+	const int LEFT_DRIVE_MOTOR_2 = 1;
+	const int RIGHT_DRIVE_MOTOR_1 = 2;
+	const int RIGHT_DRIVE_MOTOR_2 = 3;
 
 	// Controller USB Port
-	int const XBOX_CONTROLLER_PORT = 1;
+	const int XBOX_CONTROLLER_PORT = 1;
 
 	// Buttons
-	int const BTN_ARM_UP = XboxController::BTN_B;
-	int const BTN_ARM_DOWN = XboxController::BTN_A;
+	const int BTN_ARM_UP = XboxController::BTN_B;
+	const int BTN_ARM_DOWN = XboxController::BTN_A;
 
 	// Pneumatics
-	int const COMPRESSOR_PORT = 1;
-	int const ARM_SOLENOID_1 = 0;
-	int const ARM_SOLENOID_2 = 1;
+	const int COMPRESSOR_PORT = 1;
+	const int ARM_SOLENOID_1 = 0;
+	const int ARM_SOLENOID_2 = 1;
 
 public:
 
