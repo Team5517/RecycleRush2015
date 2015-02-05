@@ -1,6 +1,6 @@
 // Xbox Controller Buttons
 
-struct XboxController {
+class XboxController {
 
 	static const int LEFT_JOYSTICK_X = 1;
 	static const int LEFT_JOYSTICK_Y = 2;
