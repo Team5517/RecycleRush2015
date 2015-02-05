@@ -1,7 +1,7 @@
 #include "WPILib.h"
 #include "XboxController.h"
 
-class Robot: public SampleRobot
+class Robot: public IterativeRobot
 {
 
 	LiveWindow *lw;
