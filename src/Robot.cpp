@@ -32,7 +32,7 @@ public:
 
 	Robot() :
 		lw(NULL),
-		robot(LEFT_DRIVE_MOTOR_1, LEFT_DRIVE_MOTOR_2, RIGHT_DRIVE_MOTOR_1, RIGHT_DRIVE_MOTOR_1),
+		robot(LEFT_DRIVE_MOTOR_1, LEFT_DRIVE_MOTOR_2, RIGHT_DRIVE_MOTOR_1, RIGHT_DRIVE_MOTOR_2),
 		controller(XBOX_CONTROLLER_PORT),
 		compressor(COMPRESSOR_PORT),
 		armSolenoid(ARM_SOLENOID_1, ARM_SOLENOID_2)
@@ -71,7 +71,7 @@ public:
 		if(controller.GetRawButton(BTN_ARM_UP) == true) {
 			armSolenoid.Set(DoubleSolenoid::kForward);
 		}
-		else if(controller.GetRawButton(BTN_ARM_UP) == true) {
+		else if(controller.GetRawButton(BTN_ARM_DOWN) == true) {
 			armSolenoid.Set(DoubleSolenoid::kReverse);
 		}
 		else {
