@@ -2,6 +2,7 @@
 
 class XboxController {
 
+public:
 	static const int LEFT_JOYSTICK_X = 1;
 	static const int LEFT_JOYSTICK_Y = 2;
 	static const int RIGHT_JOYSTICK_X = 4;
