@@ -1,22 +1,20 @@
 // Xbox Controller Buttons
 
-class XboxController {
+struct XboxController {
 
-public:
-
-	int const LEFT_JOYSTICK_X = 1;
-	int const LEFT_JOYSTICK_Y = 2;
-	int const RIGHT_JOYSTICK_X = 4;
-	int const RIGHT_JOYSTICK_Y = 5;
+	static const int LEFT_JOYSTICK_X = 1;
+	static const int LEFT_JOYSTICK_Y = 2;
+	static const int RIGHT_JOYSTICK_X = 4;
+	static const int RIGHT_JOYSTICK_Y = 5;
 	
-	int const BTN_A = 1;
-	int const BTN_B = 2;
-	int const BTN_X = 3;
-	int const BTN_Y = 4;
-	int const BTN_RB = 5;
-	int const BTN_LB = 6;
-	int const BTN_BACK = 7;
-	int const BTN_START = 8;
+	static const int BTN_A = 1;
+	static const int BTN_B = 2;
+	static const int BTN_X = 3;
+	static const int BTN_Y = 4;
+	static const int BTN_RB = 5;
+	static const int BTN_LB = 6;
+	static const int BTN_BACK = 7;
+	static const int BTN_START = 8;
 
 };
 
