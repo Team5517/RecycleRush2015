@@ -74,8 +74,8 @@ public:
 		 * Robot drive system
 		 */
 		robotDrive.TankDrive(
-			-controller.GetRawAxis(XboxController::LEFT_JOYSTICK_X),
-			-controller.GetRawAxis(XboxController::RIGHT_JOYSTICK_X)
+			-controller.GetRawAxis(XboxController::LEFT_JOYSTICK_Y),
+			-controller.GetRawAxis(XboxController::RIGHT_JOYSTICK_Y)
 		);
 
 		/*
