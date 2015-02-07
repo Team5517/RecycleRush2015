@@ -2,8 +2,8 @@
  * XBOX Controller Mapping
  */
 
-#if !defined(_XBOX_CONTROLLER_H_)
-#define _XBOX_CONTROLLER_H_ 1
+#ifndef XBOX_CONTROLLER_H
+#define XBOX_CONTROLLER_H
 
 class XboxController {
 
@@ -26,4 +26,4 @@ public:
 
 };
 
-#endif
+#endif // XBOX_CONTROLLER_H

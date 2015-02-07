@@ -1,5 +1,6 @@
 #include "WPILib.h"
 #include "XboxController.h"
+#include "MainDefines.h"
 
 class Robot: public IterativeRobot
 {
@@ -9,24 +10,6 @@ class Robot: public IterativeRobot
 	Joystick controller;
 	Compressor compressor;
 	DoubleSolenoid armSolenoid;
-
-	// Motor PWM Ports
-	const int LEFT_DRIVE_MOTOR_1 = 0;
-	const int LEFT_DRIVE_MOTOR_2 = 1;
-	const int RIGHT_DRIVE_MOTOR_1 = 2;
-	const int RIGHT_DRIVE_MOTOR_2 = 3;
-
-	// Controller USB Port
-	const int CONTROLLER_USB_PORT = 1;
-
-	// Buttons
-	const int BTN_ARM_UP = XboxController::BTN_B;
-	const int BTN_ARM_DOWN = XboxController::BTN_A;
-
-	// Pneumatics
-	const int COMPRESSOR_PORT = 1;
-	const int ARM_SOLENOID_1 = 0;
-	const int ARM_SOLENOID_2 = 1;
 
 public:
 
