@@ -2,7 +2,7 @@
 #include "XboxController.h"
 #include "MainDefines.h"
 
-class Robot: public IterativeRobot
+class Robot: public SampleRobot
 {
 
 	LiveWindow *lw;
@@ -25,80 +25,57 @@ public:
 		armSolenoid(ARM_SOLENOID_1, ARM_SOLENOID_2)
 	{
 		robotDrive.SetExpiration(0.1);
-	}
-
-	/**
-	 * Robot initialization method
-	 * Called when robot is enabled
-	 */
-	void RobotInit() {
 		lw = LiveWindow::GetInstance();
 		compressor.Start();
 	}
 
 	/**
-	 * Autonomous init
-	 * Called when autonomous starts
+	 * Autonomous mode
 	 */
-	void AutonomousInit()
+	void Autonomous()
 	{
-
 	}
 
 	/**
-	 * Autonomous periodic
-	 * Called every ~20ms on a loop during autonomous
+	 * Teleop mode
 	 */
-	void AutonomousPeriodic()
+	void OperatorControl()
 	{
+		robotDrive.SetSafetyEnabled(true);
+		while (IsOperatorControl() && IsEnabled())
+		{
+			/*
+			 * Robot drive system
+			 */
+			robotDrive.TankDrive(
+				-controller.GetRawAxis(XboxController::LEFT_JOYSTICK_Y),
+				-controller.GetRawAxis(XboxController::RIGHT_JOYSTICK_Y)
+			);
 
+			/*
+			 * Operate the arm
+			 */
+			if(controller.GetRawButton(BTN_ARM_UP) == true) {
+				armSolenoid.Set(DoubleSolenoid::kForward);
+			}
+			else if(controller.GetRawButton(BTN_ARM_DOWN) == true) {
+				armSolenoid.Set(DoubleSolenoid::kReverse);
+			}
+			else {
+				armSolenoid.Set(DoubleSolenoid::kOff);
+			}
+
+		} // end while
 	}
 
 	/**
-	 * Teleop init
-	 * Called when teleop starts
+	 * Test mode
 	 */
-	void TeleopInit()
+	void Test()
 	{
-
-	}
-
-	/**
-	 * Teleop periodic
-	 * Called every ~20ms during teleop
-	 */
-	void TeleopPeriodic()
-	{
-
-		/*
-		 * Robot drive system
-		 */
-		robotDrive.TankDrive(
-			-controller.GetRawAxis(XboxController::LEFT_JOYSTICK_Y),
-			-controller.GetRawAxis(XboxController::RIGHT_JOYSTICK_Y)
-		);
-
-		/*
-		 * Operate the arm
-		 */
-		if(controller.GetRawButton(BTN_ARM_UP) == true) {
-			armSolenoid.Set(DoubleSolenoid::kForward);
+		while(IsTest() && IsEnabled()) {
+			lw->Run();
 		}
-		else if(controller.GetRawButton(BTN_ARM_DOWN) == true) {
-			armSolenoid.Set(DoubleSolenoid::kReverse);
-		}
-		else {
-			armSolenoid.Set(DoubleSolenoid::kOff);
-		}
-
-	}
-
-	/**
-	 * Called during test mode
-	 */
-	void TestPeriodic()
-	{
-		lw->Run();
 	}
 };
 

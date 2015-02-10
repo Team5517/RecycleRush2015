@@ -15,11 +15,11 @@
 #define RIGHT_DRIVE_MOTOR_2   3
 
 // Controller USB Port
-#define CONTROLLER_USB_PORT   1
+#define CONTROLLER_USB_PORT   0
 
 // Buttons
-#define BTN_ARM_UP            XboxController::BTN_B
-#define BTN_ARM_DOWN          XboxController::BTN_A
+#define BTN_ARM_UP            XboxController::BTN_RB
+#define BTN_ARM_DOWN          XboxController::BTN_LB
 
 // Pneumatics
 #define COMPRESSOR_PORT       1

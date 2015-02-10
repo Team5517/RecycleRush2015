@@ -17,12 +17,17 @@ public:
 	static const int BTN_LB = 6;
 	static const int BTN_BACK = 7;
 	static const int BTN_START = 8;
+
 	static const int LEFT_JOYSTICK_PUSH = 9;
 	static const int RIGHT_JOYSTICK_PUSH = 10;
-	static const int LEFT_JOYSTICK_X = 1;
-	static const int LEFT_JOYSTICK_Y = 2;
+
+	static const int LEFT_JOYSTICK_X = 0;
+	static const int LEFT_JOYSTICK_Y = 1;
 	static const int RIGHT_JOYSTICK_X = 4;
 	static const int RIGHT_JOYSTICK_Y = 5;
+
+	static const int LEFT_TRIGGER = 2;
+	static const int RIGHT_TRIGGER = 3;
 
 };
 
