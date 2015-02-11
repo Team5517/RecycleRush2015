@@ -9,22 +9,23 @@
 #define SRC_MAINDEFINES_
 
 // Motor PWM Ports
-#define LEFT_DRIVE_MOTOR_1    0
-#define LEFT_DRIVE_MOTOR_2    1
-#define RIGHT_DRIVE_MOTOR_1   2
-#define RIGHT_DRIVE_MOTOR_2   3
+#define LEFT_DRIVE_MOTOR_1       0
+#define LEFT_DRIVE_MOTOR_2       1
+#define RIGHT_DRIVE_MOTOR_1      2
+#define RIGHT_DRIVE_MOTOR_2      3
 
-// Controller USB Port
-#define CONTROLLER_USB_PORT   0
+// Controller USB Ports
+#define LEFT_JOYSTICK_USB_PORT   2
+#define RIGHT_JOYSTICK_USB_PORT  3
 
 // Buttons
-#define BTN_ARM_UP            XboxController::BTN_RB
-#define BTN_ARM_DOWN          XboxController::BTN_LB
+#define BTN_ARM_UP               rightJoystick.GetRawButton(JoystickPorts::TRIGGER)
+#define BTN_ARM_DOWN             leftJoystick.GetRawButton(JoystickPorts::TRIGGER)
 
 // Pneumatics
-#define COMPRESSOR_PORT       1
-#define ARM_SOLENOID_1        0
-#define ARM_SOLENOID_2        1
+#define COMPRESSOR_PORT          1
+#define ARM_SOLENOID_1           0
+#define ARM_SOLENOID_2           1
 
 
 #endif /* SRC_MAINDEFINES_ */

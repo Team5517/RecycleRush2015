@@ -1,5 +1,5 @@
 #include "WPILib.h"
-#include "XboxController.h"
+#include "JoystickPorts.h"
 #include "MainDefines.h"
 
 class Robot: public SampleRobot
@@ -7,7 +7,8 @@ class Robot: public SampleRobot
 
 	LiveWindow *lw;
 	RobotDrive robotDrive;
-	Joystick controller;
+	Joystick leftJoystick;
+	Joystick rightJoystick;
 	Compressor compressor;
 	DoubleSolenoid armSolenoid;
 
@@ -20,7 +21,8 @@ public:
 	Robot() :
 		lw(NULL),
 		robotDrive(LEFT_DRIVE_MOTOR_1, LEFT_DRIVE_MOTOR_2, RIGHT_DRIVE_MOTOR_1, RIGHT_DRIVE_MOTOR_2),
-		controller(CONTROLLER_USB_PORT),
+		leftJoystick(LEFT_JOYSTICK_USB_PORT),
+		rightJoystick(RIGHT_JOYSTICK_USB_PORT),
 		compressor(COMPRESSOR_PORT),
 		armSolenoid(ARM_SOLENOID_1, ARM_SOLENOID_2)
 	{
@@ -48,17 +50,17 @@ public:
 			 * Robot drive system
 			 */
 			robotDrive.TankDrive(
-				-controller.GetRawAxis(XboxController::LEFT_JOYSTICK_Y),
-				-controller.GetRawAxis(XboxController::RIGHT_JOYSTICK_Y)
+				-leftJoystick.GetRawAxis(JoystickPorts::Y_AXIS),
+				-rightJoystick.GetRawAxis(JoystickPorts::Y_AXIS)
 			);
 
 			/*
 			 * Operate the arm
 			 */
-			if(controller.GetRawButton(BTN_ARM_UP) == true) {
+			if(BTN_ARM_UP == true) {
 				armSolenoid.Set(DoubleSolenoid::kForward);
 			}
-			else if(controller.GetRawButton(BTN_ARM_DOWN) == true) {
+			else if(BTN_ARM_DOWN == true) {
 				armSolenoid.Set(DoubleSolenoid::kReverse);
 			}
 			else {
