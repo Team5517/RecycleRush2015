@@ -27,6 +27,10 @@ public:
 		armSolenoid(ARM_SOLENOID_1, ARM_SOLENOID_2)
 	{
 		robotDrive.SetExpiration(0.1);
+		robotDrive.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
+		robotDrive.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
+		robotDrive.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
+		robotDrive.SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 		lw = LiveWindow::GetInstance();
 		compressor.Start();
 	}
@@ -46,28 +50,29 @@ public:
 		robotDrive.SetSafetyEnabled(true);
 		while (IsOperatorControl() && IsEnabled())
 		{
-			/*
-			 * Robot drive system
-			 */
-			robotDrive.TankDrive(
-				-leftJoystick.GetRawAxis(JoystickPorts::Y_AXIS),
-				-rightJoystick.GetRawAxis(JoystickPorts::Y_AXIS)
-			);
-
-			/*
-			 * Operate the arm
-			 */
-			if(BTN_ARM_UP == true) {
-				armSolenoid.Set(DoubleSolenoid::kForward);
-			}
-			else if(BTN_ARM_DOWN == true) {
-				armSolenoid.Set(DoubleSolenoid::kReverse);
-			}
-			else {
-				armSolenoid.Set(DoubleSolenoid::kOff);
-			}
-
+			robotDrive.ArcadeDrive(rightJoystick);
+			ArmControl();
 		} // end while
+	}
+
+	void ArmControl() {
+		if(BTN_ARM_UP == true) {
+			ArmUp();
+		}
+		else if(BTN_ARM_DOWN == true) {
+			ArmDown();
+		}
+		else {
+			armSolenoid.Set(DoubleSolenoid::kOff);
+		}
+	}
+
+	void ArmUp() {
+		armSolenoid.Set(DoubleSolenoid::kForward);
+	}
+
+	void ArmDown() {
+		armSolenoid.Set(DoubleSolenoid::kReverse);
 	}
 
 	/**
