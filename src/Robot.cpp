@@ -44,28 +44,38 @@ public:
 		robotDrive.SetSafetyEnabled(true);
 		while (IsOperatorControl() && IsEnabled())
 		{
-			/*
-			 * Robot drive system
-			 */
-			robotDrive.TankDrive(
-				-controller.GetRawAxis(XboxController::LEFT_JOYSTICK_Y),
-				-controller.GetRawAxis(XboxController::RIGHT_JOYSTICK_Y)
-			);
-
-			/*
-			 * Operate the arm
-			 */
-			if(controller.GetRawButton(BTN_ARM_UP) == true) {
-				armSolenoid.Set(DoubleSolenoid::kForward);
-			}
-			else if(controller.GetRawButton(BTN_ARM_DOWN) == true) {
-				armSolenoid.Set(DoubleSolenoid::kReverse);
-			}
-			else {
-				armSolenoid.Set(DoubleSolenoid::kOff);
-			}
-
+			DriveRobot();
+			ArmControl();
 		} // end while
+	}
+
+
+	void DriveRobot() {
+		robotDrive.TankDrive(
+			-controller.GetRawAxis(XboxController::LEFT_JOYSTICK_Y),
+			-controller.GetRawAxis(XboxController::RIGHT_JOYSTICK_Y)
+		);
+		robotDrive.ArcadeDrive();
+	}
+
+	void ArmControl() {
+		if(controller.GetRawButton(BTN_ARM_UP) == true) {
+			ArmUp();
+		}
+		else if(controller.GetRawButton(BTN_ARM_DOWN) == true) {
+			ArmDown();
+		}
+		else {
+			armSolenoid.Set(DoubleSolenoid::kOff);
+		}
+	}
+
+	void ArmUp() {
+		armSolenoid.Set(DoubleSolenoid::kForward);
+	}
+
+	void ArmDown() {
+		armSolenoid.Set(DoubleSolenoid::kReverse);
 	}
 
 	/**
