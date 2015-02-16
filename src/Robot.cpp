@@ -27,8 +27,8 @@ public:
 		armSolenoid(ARM_SOLENOID_1, ARM_SOLENOID_2)
 	{
 		robotDrive.SetExpiration(0.1);
-		lw = LiveWindow::GetInstance();
 		compressor.Start();
+		lw = LiveWindow::GetInstance();
 	}
 
 	/**
@@ -36,6 +36,24 @@ public:
 	 */
 	void Autonomous()
 	{
+		Timer autoTimer;
+		autoTimer.Start();
+
+		while(IsAutonomous() && IsEnabled()) {
+			printf("hello\n");
+
+			int driveSeconds = 2.5;
+
+			if(autoTimer.Get() < driveSeconds) {
+				robotDrive.TankDrive(0.5, 0.5);
+			}
+			else {
+				robotDrive.TankDrive(0.0, 0.0);
+				autoTimer.Stop();
+			}
+
+			Wait(0.05);
+		}
 	}
 
 	/**
@@ -51,6 +69,7 @@ public:
 				-rightJoystick.GetRawAxis(JoystickPorts::Y_AXIS)
 			);
 			ArmControl();
+			Wait(0.04);
 		} // end while
 	}
 
