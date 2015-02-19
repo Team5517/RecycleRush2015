@@ -55,16 +55,16 @@ public:
 		Wait(0.04);
 	}
 
+	/**
+	 * Every time autonomous starts
+	 */
 	void AutonInit() {
 		autonStage = 0;
 	}
 
-	void RestartAutonTimer() {
-		autonTimer.Reset();
-		autonTimer.Stop();
-		autonTimer.Start();
-	}
-
+	/**
+	 * Select auton
+	 */
 	void SelectAuton(int AutonMode) {
 		switch(AutonMode) {
 			case 0:
@@ -79,6 +79,19 @@ public:
 		}
 	}
 
+	/**
+	 * Restarts the timer for auton
+	 */
+	void RestartAutonTimer() {
+		autonTimer.Reset();
+		autonTimer.Stop();
+		autonTimer.Start();
+	}
+
+	/**
+	 * DriveForwardAuton
+	 * Drives forward into the auto zone and pivots 90 degrees right
+	 */
 	void DriveForwardAuton()
 	{
 		int time = autonTimer.Get();
@@ -117,6 +130,9 @@ public:
 
 	}
 
+	/**
+	 * Picks up first auton (yellow) tote and brings it into the auto zone
+	 */
 	void OneToteAuton()
 	{
 		int time = autonTimer.Get();
