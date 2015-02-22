@@ -50,9 +50,8 @@ public:
 		AutonInit();
 		while(IsAutonomous() && IsEnabled()) {
 			SelectAuton(AUTON_MODE);
-
+			Wait(0.04);
 		}
-		Wait(0.04);
 	}
 
 	/**
@@ -60,6 +59,7 @@ public:
 	 */
 	void AutonInit() {
 		autonStage = 0;
+		SmartDashboard::PutNumber("Autonomous Mode", AUTON_MODE);
 	}
 
 	/**
