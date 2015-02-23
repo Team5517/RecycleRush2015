@@ -15,8 +15,8 @@
 #define RIGHT_DRIVE_MOTOR_2      3
 
 // Controller USB Ports
-#define LEFT_JOYSTICK_USB_PORT   2
-#define RIGHT_JOYSTICK_USB_PORT  3
+#define LEFT_JOYSTICK_USB_PORT   0
+#define RIGHT_JOYSTICK_USB_PORT  1
 
 // Buttons
 #define BTN_ARM_UP               rightJoystick.GetRawButton(JoystickPorts::TRIGGER)
